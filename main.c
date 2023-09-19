@@ -20,12 +20,20 @@
 
 void alloc(t_data *data, char **argv, int argc)
 {
+	t_philo *philo;
+
 	data->nb_philo = ft_atoi(argv[1]);
 	data->tt_die = ft_atoi(argv[2]);
 	data->tt_eat =  ft_atoi(argv[3]);
 	data->tt_sleep = ft_atoi(argv[4]);
+	data->dead = 0;
 	if (argc == 6)
 		data->nb_philo_eat = ft_atoi(argv[5]);
+	pthread_mutex_init(&data->print, NULL);
+	pthread_mutex_init(&data->die, NULL);
+	pthread_mutex_init(&data->nb_eat_lock, NULL);
+	philo = malloc(sizeof(t_philo) * data->nb_philo);
+	data->fork = malloc(sizeof(pthread_mutex_t)* data->nb_philo);
 }
 
 
