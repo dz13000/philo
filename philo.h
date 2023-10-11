@@ -37,7 +37,7 @@ typedef struct s_data
 	int					tt_sleep;
 	int					nb_philo_eat;
 	int					dead;
-	int					finsh;
+	int					finish;
 	pthread_mutex_t		die;
 	pthread_mutex_t		nb_eat_lock;
 	pthread_mutex_t		print;
@@ -50,5 +50,18 @@ int						verif_all_numbers(char **argv);
 long					ft_atoi_long(char *argv);
 int						verif_int(char **argv);
 int						ft_atoi(char *str);
+int	ft_eat(t_philo *philo);
+int	fork_eat(t_philo *philo);
+int	dors_lancien(long int duree);
+int	print_msg(t_philo *philo, char *msg);
+void	ft_unlock(t_philo *philo, int opt);
+int	ft_sleep(t_philo *philo);
+void	vision(t_data *data);
+long int	fc_time(void);
+void 	init_philo(t_philo *philo, t_data *data);
+void	*routine(void *ptr);
+void alloc(t_data *data, char **argv, int argc);
+int	verif_death(t_philo *philo);
+void	ft_dead(t_data *data, int i);
 
 #endif
